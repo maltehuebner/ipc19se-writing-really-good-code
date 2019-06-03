@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 namespace ClansOfCaledonia;
 
+use ClansOfCaledonia\Good\Good;
+
 final class Offer
 {
     /**

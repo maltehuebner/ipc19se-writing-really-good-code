@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-namespace ClansOfCaledonia;
+namespace ClansOfCaledonia\Good;
 
 final class Milk extends Good
 {

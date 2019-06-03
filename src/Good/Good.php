@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-namespace ClansOfCaledonia;
+namespace ClansOfCaledonia\Good;
 
 abstract class Good
 {
