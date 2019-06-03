@@ -5,34 +5,33 @@ use ClansOfCaledonia\Good\Good;
 
 final class Market
 {
-    /** @var PriceList $priceList */
-    protected $priceList;
+    /** @var PriceTable $priceTable */
+    protected $priceTable;
 
     public function __construct()
     {
-        $this->priceList = PriceList::fromList(
-            new Pound(3),
-            new Pound(4),
-            new Pound(5),
-            new Pound(5),
-            new Pound(6),
-            new Pound(6),
-            new Pound(7),
-            new Pound(7),
-            new Pound(8),
-            new Pound(8)
-        );
+        $this->priceTable = new PriceTable();
     }
-    public function priceFor(Good $milk): Pound
+
+    public function priceFor(Good $good): Pound
     {
-        return $this->priceList->current();
+        return $this->priceTable->getPriceListFor(get_class($good))->current();
     }
 
     public function sellTo(Offer $offer): Pound
     {
         $pound = $this->priceFor($offer->good())->multiplyValue($offer->amount()->amount());
 
-        $this->priceList->decrease();
+        $this->priceTable->getPriceListFor(get_class($offer->good()))->decrease();
+
+        return $pound;
+    }
+
+    public function buyFrom(Offer $offer): Pound
+    {
+        $pound = $this->priceFor($offer->good())->multiplyValue($offer->amount()->amount());
+
+        $this->priceTable->getPriceListFor(get_class($offer->good()))->increase();
 
         return $pound;
     }

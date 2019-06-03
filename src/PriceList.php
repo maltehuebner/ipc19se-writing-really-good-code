@@ -11,7 +11,7 @@ final class PriceList
     /**
      * @var int
      */
-    private $position = 3;
+    private $position = 7;
 
     public static function fromList(Pound ...$pounds): self
     {
