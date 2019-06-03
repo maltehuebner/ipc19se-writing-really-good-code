@@ -34,4 +34,22 @@ final class PriceListTest extends TestCase
 
         $this->assertEquals(new Pound(4), $prices->current());
     }
+
+    public function testPriceListIncreasesPosition(): void
+    {
+        $prices = $this->createPriceList();
+
+        $prices->increase();
+
+        $this->assertEquals(new Pound(5), $prices->current());
+    }
+
+    public function testPriceListDecreasesPosition(): void
+    {
+        $prices = $this->createPriceList();
+
+        $prices->decrease();
+
+        $this->assertEquals(new Pound(3), $prices->current());
+    }
 }

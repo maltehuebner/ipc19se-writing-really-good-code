@@ -31,15 +31,17 @@ final class PriceList
         return $this->prices[$this->position];
     }
 
-    public function increase(): void
+    public function increase(): Pound
     {
-        ++$this->position;
+        return $this->prices[++$this->position];
     }
 
-    public function decrease(): void
+    public function decrease(): Pound
     {
         if ($this->position > 1) {
             --$this->position;
         }
+
+        return $this->prices[$this->position];
     }
 }
