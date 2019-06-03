@@ -38,10 +38,6 @@ final class PriceList
 
     public function decrease(): Pound
     {
-        if ($this->position > 1) {
-            --$this->position;
-        }
-
-        return $this->prices[$this->position];
+        return $this->prices[--$this->position];
     }
 }
