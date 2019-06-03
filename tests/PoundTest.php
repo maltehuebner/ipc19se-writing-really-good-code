@@ -16,4 +16,36 @@ final class PoundTest extends TestCase
 
         $this->assertSame($amount, $p->amount());
     }
+
+    public function testAddPound(): void
+    {
+        $myPound = new Pound(9);
+        $yourPound = new Pound(3);
+
+        $this->assertEquals(new Pound(12), $myPound->addPound($yourPound));
+    }
+
+    public function testSubPound(): void
+    {
+        $myPound = new Pound(9);
+        $yourPound = new Pound(3);
+
+        $this->assertEquals(new Pound(6), $myPound->subPound($yourPound));
+    }
+
+    public function testMultiplyPound(): void
+    {
+        $myPound = new Pound(9);
+        $yourPound = new Pound(3);
+
+        $this->assertEquals(new Pound(27), $myPound->multiplyPound($yourPound));
+    }
+
+    public function testDiffPound(): void
+    {
+        $myPound = new Pound(9);
+        $yourPound = new Pound(3);
+
+        $this->assertEquals(new Pound(3), $myPound->diffPound($yourPound));
+    }
 }

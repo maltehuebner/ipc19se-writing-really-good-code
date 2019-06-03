@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class PriceListTest extends TestCase
 {
-    public function testHasInitialPrice(): void
+    protected function createPriceList(): PriceList
     {
         $prices = PriceList::fromList(
             new Pound(1),
@@ -24,6 +24,13 @@ final class PriceListTest extends TestCase
             new Pound(9),
             new Pound(10)
         );
+
+        return $prices;
+    }
+
+    public function testHasInitialPrice(): void
+    {
+        $prices = $this->createPriceList();
 
         $this->assertEquals(new Pound(4), $prices->current());
     }
